@@ -8,7 +8,7 @@ const userSession = ref<Session | null>(null)
  * Handles user login via email + password into a supabase session.
  * If not password is empty, it will send a magic link to the users email address.
  */
-async function handleLogin(credentials: Credentials) {
+async function handleLogin(credentials: Credentials): Promise<void> {
   try {
     const { error, user } = await supabase.auth.signIn({
       email: credentials.email,
@@ -30,7 +30,7 @@ async function handleLogin(credentials: Credentials) {
 /*
  * Handles signup provided a valid credentials object.
  */
-async function handleSignup(credentials: Credentials) {
+async function handleSignup(credentials: Credentials): Promise<void> {
   try {
     const { email, password } = credentials
     // prompt user if they have not filled populated their credentials
@@ -55,7 +55,7 @@ async function handleSignup(credentials: Credentials) {
  * Handles signup via Third Pary Login.
  * https://supabase.io/docs/guides/auth#third-party-logins
  */
-async function handleOAuthLogin(provider: Provider) {
+async function handleOAuthLogin(provider: Provider): Promise<void> {
   const { error } = await supabase.auth.signIn({ provider })
   if (error) console.error('Error: ', error.message)
 }
@@ -63,7 +63,7 @@ async function handleOAuthLogin(provider: Provider) {
 /**
  * Handles password reset. Will send an email to the given email address.
  */
-async function handlePasswordReset() {
+async function handlePasswordReset(): Promise<void> {
   const email = prompt('Please enter your email:')
   if (!email) {
     window.alert('Email address is required.')
@@ -77,7 +77,7 @@ async function handlePasswordReset() {
   }
 }
 
-async function handleUpdateUser(credentials: Credentials) {
+async function handleUpdateUser(credentials: Credentials): Promise<void> {
   try {
     const { error } = await supabase.auth.update(credentials)
     if (error) {
@@ -94,7 +94,7 @@ async function handleUpdateUser(credentials: Credentials) {
 /**
  * Handles logging a user out of a superbase session
  */
-async function handleLogout() {
+async function handleLogout(): Promise<void> {
   console.log('logging out')
   try {
     const { error } = await supabase.auth.signOut()

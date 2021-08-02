@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Auth from '@/components/Auth.vue'
 import PasswordReset from '@/components/PasswordReset.vue'
 import TodoList from '@/components/TodoList.vue'
@@ -60,14 +60,18 @@ export default {
     Loading,
     Footer,
   },
+  // for no particular reason this setup fails with @typescript-eslint/explicit-module-boundary-types
+  // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.md
+  /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+  setup() {
+    return { userSession, handleLogout }
+  },
+  /* eslint-enable @typescript-eslint/explicit-module-boundary-types */
   computed: {
-    showPasswordReset: function () {
+    showPasswordReset: function (): boolean {
       const requestType = getParameterByName('type', location.href)
       return requestType === 'recovery'
     },
-  },
-  setup() {
-    return { userSession, handleLogout }
   },
 }
 </script>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { supabase } from '@/lib/supabase'
 import { ref } from 'vue'
 
@@ -7,7 +6,7 @@ const allTodos = ref<Todo[]>([])
 /**
  * Retreive all todo for the signed in user
  */
-async function fetchTodos() {
+async function fetchTodos(): Promise<void> {
   try {
     const { data: todos, error } = await supabase
       .from('todos')
@@ -56,7 +55,10 @@ async function addTodo(todo: Todo): Promise<null | Todo> {
 /**
  * Targets a specific todo via its record id and updates the is_completed attribute.
  */
-async function updateTaskCompletion(todo: Todo, isCompleted: boolean) {
+async function updateTaskCompletion(
+  todo: Todo,
+  isCompleted: boolean
+): Promise<void> {
   try {
     const { error } = await supabase
       .from('todos')
@@ -80,7 +82,7 @@ async function updateTaskCompletion(todo: Todo, isCompleted: boolean) {
 /**
  *  Deletes a todo via its id
  */
-async function deleteTodo(todo: Todo) {
+async function deleteTodo(todo: Todo): Promise<void> {
   try {
     await supabase.from('todos').delete().eq('id', todo.id)
     console.log('deleted todo', todo.id)

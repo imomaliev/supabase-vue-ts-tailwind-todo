@@ -19,15 +19,15 @@
       </div>
       <div>
         <input
-          @click="updateTaskCompletion(todo, !todo['is_complete'])"
           class="cursor-pointer"
           type="checkbox"
           :checked="todo['is_complete']"
+          @click="updateTaskCompletion(todo, !todo['is_complete'])"
         />
       </div>
       <button
-        @click="clearTodo"
         class="w-4 h-4 ml-2 border-2 hover:border-black rounded"
+        @click="clearTodo"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ export default defineComponent({
   },
   setup(props) {
     // Removes todo from supbase and also from app state
-    function clearTodo() {
+    function clearTodo(): void {
       deleteTodo(props.todo).then(() => {
         allTodos.value = allTodos.value.filter(
           (todo) => todo.id != props.todo.id

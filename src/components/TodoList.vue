@@ -8,7 +8,7 @@
         type="text"
         placeholder="What do you need to?"
       />
-      <button @click="insertTask" class="btn-black">Add</button>
+      <button class="btn-black" @click="insertTask">Add</button>
     </div>
 
     <div class="bg-white shadow overflow-hidden rounded-md">
@@ -20,7 +20,6 @@
 </template>
 
 <script lang="ts">
-/* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent, ref } from 'vue'
 import Todo from '@/components/Todo.vue'
 import { allTodos, fetchTodos, addTodo } from '@/utils/useTodo'
@@ -54,7 +53,7 @@ export default defineComponent({
       try {
         // Try and wrie the data to to the database
         const todo = await addTodo({
-          user_id: userSession.value.user.id,
+          user_id: userSession?.value.user?.id,
           task: task.value,
         })
 

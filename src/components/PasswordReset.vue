@@ -4,6 +4,7 @@
       <div class="mb-4">
         <label class="font-bold text-grey-darker block mb-2">Password</label>
         <input
+          v-model="password"
           type="password"
           class="
             block
@@ -18,16 +19,15 @@
             shadow
           "
           placeholder="Your password"
-          v-model="password"
         />
       </div>
 
       <div class="flex flex-col gap-2">
         <a
-          @click="handleUpdateUser({ password: password })"
-          href="#"
           class="btn-black"
+          href="#"
           tabindex="0"
+          @click="handleUpdateUser({ password: password })"
         >
           Update password
         </a>

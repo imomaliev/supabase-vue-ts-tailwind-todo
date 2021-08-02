@@ -4,6 +4,7 @@
       <div class="mb-4">
         <label class="font-bold text-grey-darker block mb-2">Email</label>
         <input
+          v-model="email"
           type="text"
           class="
             block
@@ -18,12 +19,12 @@
             shadow
           "
           placeholder="Your email"
-          v-model="email"
         />
       </div>
       <div class="mb-4">
         <label class="font-bold text-grey-darker block mb-2">Password</label>
         <input
+          v-model="password"
           type="password"
           class="
             block
@@ -38,23 +39,22 @@
             shadow
           "
           placeholder="Your password"
-          v-model="password"
         />
       </div>
 
       <div class="flex flex-col gap-2">
         <a
-          @click="handleSignup({ email, password })"
-          href="#"
           class="btn-black"
+          href="#"
           tabindex="0"
+          @click="handleSignup({ email, password })"
         >
           Sign up
         </a>
         <a
-          @click="handleLogin({ email, password })"
-          href="#"
           class="btn-black-outline"
+          href="#"
+          @click="handleLogin({ email, password })"
         >
           <span v-if="password.length">Sign in</span>
           <span v-else> Send magic link </span>
@@ -63,8 +63,6 @@
 
       <div class="mt-2 text-sm leading-5">
         <a
-          @click.prevent="handlePasswordReset"
-          href="/"
           class="
             font-medium
             text-indigo-600
@@ -74,6 +72,8 @@
             ease-in-out
             duration-150
           "
+          href="/"
+          @click.prevent="handlePasswordReset"
         >
           Forgot your password?
         </a>
@@ -93,8 +93,6 @@
           <div class="mt-6">
             <span class="block w-full rounded-md shadow-sm">
               <button
-                @click="handleOAuthLogin('github')"
-                type="button"
                 class="
                   w-full
                   flex
@@ -116,6 +114,8 @@
                   duration-150
                   ease-in-out
                 "
+                type="button"
+                @click="handleOAuthLogin('github')"
               >
                 GitHub
               </button>
@@ -124,8 +124,6 @@
           <div class="mt-6">
             <span class="block w-full rounded-md shadow-sm">
               <button
-                @click="handleOAuthLogin('google')"
-                type="button"
                 class="
                   w-full
                   flex
@@ -147,6 +145,8 @@
                   duration-150
                   ease-in-out
                 "
+                type="button"
+                @click="handleOAuthLogin('google')"
               >
                 Google
               </button>
