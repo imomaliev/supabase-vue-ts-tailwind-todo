@@ -12,7 +12,19 @@
     >
       <Auth />
     </div>
-    <div v-else class="w-full h-full flex flex-col justify-center items-center p-4 max-w-sm m-auto">
+    <div
+      v-else
+      class="
+        w-full
+        h-full
+        flex flex-col
+        justify-center
+        items-center
+        p-4
+        max-w-sm
+        m-auto
+      "
+    >
       <Suspense>
         <template #default>
           <div>
@@ -49,10 +61,10 @@ export default {
     Footer,
   },
   computed: {
-    showPasswordReset: function() {
+    showPasswordReset: function () {
       const requestType = getParameterByName('type', location.href)
       return requestType === 'recovery'
-    }
+    },
   },
   setup() {
     return { userSession, handleLogout }

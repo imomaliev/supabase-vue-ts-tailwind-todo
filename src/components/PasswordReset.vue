@@ -5,14 +5,30 @@
         <label class="font-bold text-grey-darker block mb-2">Password</label>
         <input
           type="password"
-          class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
+          class="
+            block
+            appearance-none
+            w-full
+            bg-white
+            border border-grey-light
+            hover:border-grey
+            px-2
+            py-2
+            rounded
+            shadow
+          "
           placeholder="Your password"
           v-model="password"
         />
       </div>
 
       <div class="flex flex-col gap-2">
-        <a @click="handleUpdateUser({ password: password })" href="#" class="btn-black" tabindex="0">
+        <a
+          @click="handleUpdateUser({ password: password })"
+          href="#"
+          class="btn-black"
+          tabindex="0"
+        >
           Update password
         </a>
       </div>

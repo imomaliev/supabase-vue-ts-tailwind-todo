@@ -9,7 +9,10 @@ const allTodos = ref<Todo[]>([])
  */
 async function fetchTodos() {
   try {
-    const { data: todos, error } = await supabase.from('todos').select('*').order('id')
+    const { data: todos, error } = await supabase
+      .from('todos')
+      .select('*')
+      .order('id')
 
     if (error) {
       console.log('error', error)

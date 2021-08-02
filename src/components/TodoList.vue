@@ -8,9 +8,7 @@
         type="text"
         placeholder="What do you need to?"
       />
-      <button @click="insertTask" class="btn-black">
-        Add
-      </button>
+      <button @click="insertTask" class="btn-black">Add</button>
     </div>
 
     <div class="bg-white shadow overflow-hidden rounded-md">
@@ -55,7 +53,10 @@ export default defineComponent({
       }
       try {
         // Try and wrie the data to to the database
-        const todo = await addTodo({ user_id: userSession.value.user.id, task: task.value })
+        const todo = await addTodo({
+          user_id: userSession.value.user.id,
+          task: task.value,
+        })
 
         // If there was no response, dont do anything.
         if (!todo) {
